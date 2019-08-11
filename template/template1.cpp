@@ -9,7 +9,7 @@ using namespace std;
 int main(){
 
 string s;
-int a,b,c,i,j,k,n,ans;
+int a,b,c,i,j,k,n,m,ans;
 vector<string> lst;
 vector<int> cnt;
 unordered_map<string,int> mp;
