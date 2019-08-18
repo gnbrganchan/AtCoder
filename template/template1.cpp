@@ -10,29 +10,29 @@ class CompareFirst
 {
 public:
     bool operator()(pair<int,int> n1,pair<int,int> n2) {
-        return n1.first>n2.first; //>:¸‡@<:~‡
+        return n1.first>n2.first; //>:ÂÂ¸Ââ€¡Â@<:Â~Ââ€¡
     }
 };
 
 
 int main(){
 
-string s;
-int a,b,c,i,j,k,n,ans;
-vector<string> lst;
-vector<int> cnt;
+  string s;
+  int a,b,c,i,j,k,n,ans;
+  vector<string> lst;
+  vector<int> cnt;
 
-//unordered_map<string,int> mp;
+  //unordered_map<string,int> mp;
 
-//priority_queue<int> pq; // default ‘å‚«‚¢‡
-//priority_queue<pair<int,int>,vector<pair<int,int>>,CompareFirst pq;
+  //priority_queue<int> pq; // default â€˜Ã¥â€šÂ«â€šÂ¢Ââ€¡
+  //priority_queue<pair<int,int>,vector<pair<int,int>>,CompareFirst pq;
 
-cin >> a >> b;
+  cin >> a >> b;
 
 
 
-cout << ans << endl;
+  cout << ans << endl;
 
-return 0;
+  return 0;
 
 }
