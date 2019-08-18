@@ -9,9 +9,9 @@ using namespace std;
 class CompareFirst
 {
 public:
-    bool operator()(pair<int,int> n1,pair<int,int> n2) {
-        return n1.first>n2.first; //>:¸‡@<:~‡
-    }
+  bool operator()(pair<int,int> n1,pair<int,int> n2) {
+    return n1.first>n2.first; //>:desc <:asc
+  }
 };
 
 
