@@ -21,6 +21,7 @@ int main(){
   int a,b,c,i,j,k,n,ans;
   vector<string> lst;
   vector<int> cnt;
+  pair<int,int> pr;
 
   //unordered_map<string,int> mp;
 
