@@ -4,6 +4,7 @@
 #include<vector>
 #include<unordered_map>
 #include<queue>
+#define rep(i,n) for(i=0;i<n;++i)
 
 using namespace std;
 class CompareFirst
