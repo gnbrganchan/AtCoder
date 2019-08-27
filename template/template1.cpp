@@ -4,7 +4,7 @@
 #include<vector>
 #include<unordered_map>
 #include<queue>
-#define rep(i,n) for(i=0;i<n;++i)
+#define rep(i,n) for(int i=0;i<n;++i)
 
 using namespace std;
 class CompareFirst
@@ -19,15 +19,13 @@ public:
 int main(){
 
   string s;
-  int a,b,c,i,j,k,n,ans;
+  int i;
   vector<string> vs;
   vector<int> vi;
   pair<int,int> pr;
-
   //unordered_map<string,int> mp;
-
   //priority_queue<int> pq; // default ‘å‚«‚¢‡
-  //priority_queue<pair<int,int>,vector<pair<int,int>>,CompareFirst pq;
+  //priority_queue<pair<int,int>,vector<pair<int,int>>,CompareFirst> pq;
 
   cin >> a >> b;
 
