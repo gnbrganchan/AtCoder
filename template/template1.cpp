@@ -1,10 +1,4 @@
-#include <iostream>
-#include <cmath>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <unordered_map>
-#include <queue>
+#include <bits/stdc++.h>
 #define rep(i,cc,n) for(int i=cc;i<=n;++i)
 
 using namespace std;
