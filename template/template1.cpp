@@ -1,9 +1,10 @@
-#include<iostream>
+#include <iostream>
+#include <cmath>
 #include <algorithm>
 #include <functional>
-#include<vector>
-#include<unordered_map>
-#include<queue>
+#include <vector>
+#include <unordered_map>
+#include <queue>
 #define rep(i,n) for(int i=0;i<n;++i)
 
 using namespace std;
@@ -19,7 +20,7 @@ public:
 int main(){
 
   string s;
-  int i;
+  int i,j,k,l,n,m;
   vector<string> vs;
   vector<int> vi;
   pair<int,int> pr;
