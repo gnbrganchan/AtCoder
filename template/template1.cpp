@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #define rep(i,cc,n) for(int i=cc;i<=n;++i)
 #define drep(i,cc,n) for(int i=cc;i>=n;--i)
+#define sz(s) (int)(s.size())
 #define mod 1000000007
 
 using namespace std;
