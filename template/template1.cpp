@@ -28,6 +28,7 @@ int main(){
   cin >> a >> b;
 
   cout << ans << endl;
+//  printf("%.10f\n",ans);
 
   return 0;
 
