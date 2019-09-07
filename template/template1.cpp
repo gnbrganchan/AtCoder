@@ -17,7 +17,7 @@ public:
 int main(){
 
   string s;
-  int i,j,k,l,n,m;
+  int n;
   vector<string> vs;
   vector<int> vi;
   pair<int,int> pr;
@@ -25,9 +25,9 @@ int main(){
   //priority_queue<int> pq; // default ‘å‚«‚¢‡
   //priority_queue<pair<int,int>,vector<pair<int,int>>,CompareFirst> pq;
 
-  cin >> a >> b;
+  cin >> ;
 
-  cout << ans << endl;
+  cout <<  << endl;
 //  printf("%.10f\n",ans);
 
   return 0;
