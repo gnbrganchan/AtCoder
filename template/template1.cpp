@@ -5,26 +5,7 @@
 #define vecprint(v) rep(i,0,v.size()-1)cout << v[i] << " ";cout << endl;
 #define mod 1000000007
 
-using namespace std;
-class CompareFirst
-{
-public:
-  bool operator()(pair<int,int> n1,pair<int,int> n2) {
-    return n1.first>n2.first; //>:desc <:asc
-  }
-};
-
-
 int main(){
-
-  string s;
-  int n;
-  vector<string> vs;
-  vector<int> vi;
-  pair<int,int> pr;
-  //unordered_map<string,int> mp;
-  //priority_queue<int> pq; // default ‘å‚«‚¢‡
-  //priority_queue<pair<int,int>,vector<pair<int,int>>,CompareFirst> pq;
 
   cin >> ;
 
@@ -32,5 +13,4 @@ int main(){
 //  printf("%.10f\n",ans);
 
   return 0;
-
 }
