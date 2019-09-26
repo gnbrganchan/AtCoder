@@ -7,10 +7,10 @@
 
 int main(){
 
-  cin >> ;
+    cin >> a;
 
-  cout <<  << endl;
+    cout <<  << endl;
 //  printf("%.10f\n",ans);
 
-  return 0;
+    return 0;
 }
