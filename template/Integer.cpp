@@ -15,3 +15,13 @@ vector<pair<long long,int>> factorize(long long n) {
   if (n != 1) res.emplace_back(n,1);
   return res;
 }
+
+//桁数
+int keta(ll c) {
+    int res = 0;
+    while (c) {
+      c /= 10;
+      ++res;
+    }
+    return res;
+}
