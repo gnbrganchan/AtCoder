@@ -4,11 +4,12 @@
 #define sz(s) (int)(s.size())
 #define vecprint(v) rep(i,0,v.size()-1)cout << v[i] << " ";cout << endl;
 #define mod 1000000007
+typedef long long ll;
 using namespace std;
 
 int main(){
 
-    cin >> a;
+    cin >> ;
 
     cout <<  << endl;
 //  printf("%.10f\n",ans);
