@@ -5,6 +5,7 @@
 #define vecprint(v) rep(i,0,v.size()-1)cout << v[i] << " ";cout << endl;
 #define mod 1000000007
 typedef long long ll;
+typedef pair<int,int> P;
 using namespace std;
 
 int main(){
