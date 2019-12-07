@@ -1,4 +1,8 @@
-//深さ優先探索
+struct edge( int to,cost;}; //P92
+
+
+
+//深さ優先探索 P33
 void dfs(int v, int p){
   for(auto u : vec[v]){
     if(u == p)continue;
@@ -7,7 +11,7 @@ void dfs(int v, int p){
   }
 }
 
-//幅優先探索 from 20190929
+//幅優先探索 from 20190929 P36
 vector<int> bfs(int sv) {
   vector<int> dist(n,INF), pre(n,-1);
   queue<int> q;
@@ -39,3 +43,40 @@ vector<int> bfs(int sv) {
     res.push_back(v);
     v = pre[v];
   }
+  
+//Union-Find木 P84
+int par[MAX_N];  //親
+int rank[MAX_N] //木の深さ
+//初期化
+void init(int n){
+  rep(i,0,n-1){
+    par[i] = i;
+    rank[i] = 0;
+  }
+}
+//木の根を求める
+int find(int x){
+  if(par[x] == x){
+    return x;
+  }else{
+    return par[x] = find(par[x]);
+  }
+}
+//xとyの属する集合を併合
+void unite(int x, int y){
+  x = find(x);
+  y = find(y);
+  if(x == y) return;
+  
+  if(rank[x] < rank[y]){
+    par[x] = y;
+  }else{
+    par[y] = x;
+    if(rank[x] == rank[y]) rank[x]++;
+  }
+}
+//xとyが同じ集合に属するか否か
+bool same(int x, int y){
+  return find(x) == find(y);
+}
+    
