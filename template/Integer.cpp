@@ -58,6 +58,9 @@ struct comb {
 //最大公約数 from 20190929
 long long gcd(long long x, long long y) { return y ? gcd(y,x%y) : x;}
 
+//最小公倍数 from 20191222
+long long lcm(long long x, long long y){return (x*y)/gcd(x,y);}
+
 //素因数分解 from 20190929
 vector<pair<long long,int>> factorize(long long n) {
   vector<pair<long long,int>> res;
