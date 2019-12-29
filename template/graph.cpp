@@ -10,6 +10,7 @@ void dfs(int v, int p){
 }
 
 
+
 //幅優先探索 from 20190929 P36
 vector<int> bfs(int sv) {
   vector<int> dist(n,INF), pre(n,-1);
@@ -45,6 +46,7 @@ vector<int> bfs(int sv) {
 }
 
 
+
 //単一始点最短路問題（ダイクストラ法）
 int cost[MAX_V][MAX_V]; //辺のコスト
 int d[MAX_V];  //頂点sからの最短距離
@@ -52,7 +54,27 @@ bool used[MAX_V]; //すでに使われたかのフラグ
 int V; //頂点数
 
 //始点sから各頂点への最短距離を求める
+void dijkstra(int s){
+  fill(d, d+V, INF);
+  fill(used, used+V, false);
+  d[s] = 0;
   
+  while(true){
+    int v = -1;
+    //まだ使われていない頂点のうち距離が最小のものを探す
+    rep(u, 0, V-1){
+      if(!used[u] && (v == -1 || d[u] < d[v]))v = u;
+    }
+    if(v == -1)break;
+    used[v] = true;
+    
+    rep(u, 0, V-1){
+      d[u] = min(d[u], d[v] + cost[v][u]);
+    }
+  }
+}
+  
+
 
 //Union-Find木 P84
 int par[MAX_N];  //親
@@ -89,6 +111,7 @@ void unite(int x, int y){
 bool same(int x, int y){
   return find(x) == find(y);
 }
+
 
 
 //最大流 Ford Fulkerson P190
@@ -131,6 +154,7 @@ int max_flow(int s, int t){
     flow += f;
   }
 }
+
 
 
 //最小費用流 P200
@@ -219,6 +243,8 @@ bool dfs(int v){
   }
   return false;
 }
+
+
 
 //二部グラフの最大マッチングを求める
 int bipartite_matching(){
