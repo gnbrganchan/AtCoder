@@ -43,6 +43,15 @@ vector<int> bfs(int sv) {
     v = pre[v];
   }
 }
+
+
+//単一始点最短路問題（ダイクストラ法）
+int cost[MAX_V][MAX_V]; //辺のコスト
+int d[MAX_V];  //頂点sからの最短距離
+bool used[MAX_V]; //すでに使われたかのフラグ
+int V; //頂点数
+
+//始点sから各頂点への最短距離を求める
   
 
 //Union-Find木 P84
@@ -183,4 +192,45 @@ int min_cost_flow(int s, int t, int f){
   }
   return res;
 }
-      
+
+
+//二部グラフの最大マッチングP197
+int V; //頂点数
+vector<int> G[MAX_V]; //グラフの隣接リスト表現
+int match[MAX_V]; //マッチングのペア
+bool used[MAX_V]; //DFSですでに調べたかのフラグ
+
+//uとvを結ぶ辺をグラフにする
+void add_edge(int u, int v){
+  G[u].push_back(v);
+  G[v].push_back(u);
+}
+
+//増加パスをDFSで探す
+bool dfs(int v){
+  used[v] = true;
+  rep(i,0,G[v].size()-1){
+    int u = G[v][i], w = match[u];
+    if(w < 0 || !used[w] && dfs(w)){
+      match[v] = u;
+      match[u] = v;
+      return true;
+    }
+  }
+  return false;
+}
+
+//二部グラフの最大マッチングを求める
+int bipartite_matching(){
+  int res = 0;
+  memset(match, -1, sizeof(match));
+  rep(v,0,V-1){
+    if(match[v] < 0){
+      memset(used, 0, sizeof(used));
+      if(dfs(v)){
+        res++;
+      }
+    }
+  }
+  return res;
+}
