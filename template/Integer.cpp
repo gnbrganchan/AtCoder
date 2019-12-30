@@ -1,4 +1,4 @@
-//fast pow
+/*---fast pow---*/
 ll mod_pow(ll x,ll n){
   ll res = 1;
   while(n > 0){
@@ -9,7 +9,9 @@ ll mod_pow(ll x,ll n){
   return res;
 }
 
-//mint
+
+
+//*---mint---*/
 struct mint {
   ll x;
   mint():x(0){}
@@ -55,13 +57,17 @@ struct comb {
 } c(3e6);
 //c.c(a,b)=>aCb
 
-//最大公約数 from 20190929
+
+
+/*---最大公約数 from 20190929---*/
 long long gcd(long long x, long long y) { return y ? gcd(y,x%y) : x;}
 
-//最小公倍数 from 20191222
+
+/*---最小公倍数 from 20191222---*/
 long long lcm(long long x, long long y){return (x*y)/gcd(x,y);}
 
-//素因数分解 from 20190929
+
+/*---素因数分解 from 20190929---*/
 vector<pair<long long,int>> factorize(long long n) {
   vector<pair<long long,int>> res;
   for (long long i = 2; i*i <= n; ++i) {
@@ -76,7 +82,9 @@ vector<pair<long long,int>> factorize(long long n) {
   return res;
 }
 
-//桁数
+
+
+/*---桁数---*/
 int keta(ll c) {
     int res = 0;
     while (c) {
@@ -86,3 +94,15 @@ int keta(ll c) {
     return res;
 }
 
+
+/*---素数かどうかの判定---*/
+bool isPrime(ll num){
+    if (num < 2) return false;
+    else if (num == 2) return true;
+    else if (num % 2 == 0) return false; // 偶数はあらかじめ除く
+
+    double sqrtNum = sqrt(num);
+    for (ll i = 3; i <= sqrtNum; i += 2)if (num % i == 0) return false;
+
+    return true;
+}
