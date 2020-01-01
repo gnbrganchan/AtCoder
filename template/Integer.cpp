@@ -55,7 +55,7 @@ struct comb {
     return f[a]*g[b]*g[a-b];
   }
 } c(3e6);
-//c.c(a,b)=>aCb
+//c.c(a,b)=>aCb mod
 
 
 
