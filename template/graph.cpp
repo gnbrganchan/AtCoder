@@ -47,7 +47,53 @@ vector<int> bfs(int sv) {
 
 
 
-//単一始点最短路問題（ダイクストラ法）
+/*---単一始点最短路問題（ベルマンフォード法） P95---*/
+//頂点fromから頂点toへのコストcostの辺
+struct edge{int from, to, cost;};
+
+edge es[MAX_E];  //辺
+
+int d[MAX_V];  //最短距離
+int V, E;  //Vは頂点数、Eは辺数
+
+//s番目の頂点から各頂点への最短距離を求める
+void shortest_path(int s){
+  rep(i, 0, V-1)d[i] = INF;
+  d[s] = 0;
+  while(true){
+    bool update = false;
+    rep(i, 0, E-1){
+      edge e = es[i];
+      if(d[e.from] != INF && d[e.to] > d[e.from] + e.cost){
+        d[e.to] = d[e.from] + e.cost;
+        update = true;
+      }
+    }
+    if(!update)break;
+  }
+}
+
+//trueなら負閉路が存在する
+bool find_negative_loop(){
+  memset(d, 0, sizeof(d));
+  
+  rep(i, 0, V-1){
+    rep(j, 0, E-1){
+      edge e = es[j];
+      if(d[e.to] >  d[e.from] + e.cost){
+        d[e.to] = d[e.from] + e.cost;
+        
+        //n回目にも更新があるなら負の閉路が存在する
+        if(i == V-1)return true;
+      }
+    }
+  }
+  return false;
+}
+
+
+
+/*---単一始点最短路問題（ダイクストラ法）※低速O(V^2)---*/
 int cost[MAX_V][MAX_V]; //辺のコスト
 int d[MAX_V];  //頂点sからの最短距離
 bool used[MAX_V]; //すでに使われたかのフラグ
@@ -76,7 +122,47 @@ void dijkstra(int s){
   
 
 
-//Union-Find木 P84
+/*---単一始点最短路問題（ダイクストラ法）※高速O(ElogV)---*/
+struct edge{int to, cost;};
+
+int V;
+vector<edge> G[MAX_V];
+int d[MAX_V];
+
+void dijkstra(int s){
+  //greater<P>を指定することでfirstが小さい順に取り出せるようにする
+  priority_queue<P, vector<P>, greater<P>> que;
+  fill(d, d+V, INF);
+  d[s] = 0;
+  que.push(P(0,s));
+  
+  while(!que.empty()){
+    P p = que.top();que.pop();
+    int v = p.second;
+    if(d[v] < p.first)continue;
+    rep(i, 0, G[v].size()-1){
+      edge e = G[v][i];
+      if(d[e.to] > d[v] + e.cost){
+        d[e.to] = d[v] + e.cost;
+        que.push(P(d[e.to], e.to));
+      }
+    }
+  }
+}
+
+
+
+/*---全点対最短路問題（ワーシャルフロイド法）P98---*/
+int d[MAX_V][MAX_V];  //d[u][v]は辺e=(u,v)のコスト（存在しない場合はINF、ただしd[i][i]=0)
+int V; //頂点数
+
+void warshall_floyd(){
+  rep(k, 0, V-1)rep(i, 0, V-1)rep(j, 0, V-1)d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+}
+
+
+
+/*---Union-Find木 P84---*/
 int par[MAX_N];  //親
 int rank[MAX_N] //木の深さ
 //初期化
@@ -114,7 +200,7 @@ bool same(int x, int y){
 
 
 
-//最大流 Ford Fulkerson P190
+/*---最大流 Ford Fulkerson P190---*/
 //辺を表す構造体（行先、容量、逆辺）
 struct edge {int to,cap, rev;};
 
@@ -157,7 +243,7 @@ int max_flow(int s, int t){
 
 
 
-//最小費用流 P200
+/*---最小費用流 P200---*/
 //辺を表す構造体（行先、容量、コスト、逆辺）
 struct edge{int to,cap, cost, rev;};
 
@@ -218,7 +304,7 @@ int min_cost_flow(int s, int t, int f){
 }
 
 
-//二部グラフの最大マッチングP197
+/*---二部グラフの最大マッチングP197---*/
 int V; //頂点数
 vector<int> G[MAX_V]; //グラフの隣接リスト表現
 int match[MAX_V]; //マッチングのペア
@@ -246,7 +332,7 @@ bool dfs(int v){
 
 
 
-//二部グラフの最大マッチングを求める
+/*---二部グラフの最大マッチングを求める---*/
 int bipartite_matching(){
   int res = 0;
   memset(match, -1, sizeof(match));
