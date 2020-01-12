@@ -1,6 +1,6 @@
 struct edge{ int to,cost;}; //P92
 
-//深さ優先探索 P33
+/*---深さ優先探索 P33---*/
 void dfs(int v, int p){
   for(auto u : vec[v]){
     if(u == p)continue;
@@ -11,38 +11,33 @@ void dfs(int v, int p){
 
 
 
-//幅優先探索 from 20190929 P36
-vector<int> bfs(int sv) {
-  vector<int> dist(n,INF), pre(n,-1);
-  queue<int> q;
-  dist[sv] = 0;
-  q.push(sv);
-  while (!q.empty()) {
-    int v = q.front(); q.pop();
-    for (int u : to[v]) {
-      if (dist[u] != INF) continue;
-      pre[u] = v;
-      dist[u] = dist[v]+1;
-      q.push(u);
+/*---幅優先探索 P36---*/
+int h,w;
+vector<string> s;
+vector<vector<int>> d;
+int dh[4] = {1,0,-1,0}, dw[4] = {0,1,0,-1};
+
+//(sx, sy)からその他の点への最短経路を求める
+int bfs(int sh, int sw){
+    queue<P> que;
+    rep(i,0,h-1)rep(j,0,w-1)d[i][j] = INF;
+    que.push(P(sh,sw));
+    d[sh][sw] = 0;
+    while(!que.empty()){
+        P p = que.front();que.pop();
+        rep(i,0,3){
+            //移動した後の点を(nx, ny)とする
+            int nh = p.first + dh[i], nw = p.second + dw[i];
+
+            //移動が可能かの判定とすでに訪れたことがあるかの判定
+            //d[nx][ny]==INFなら未探索
+            if(0<=nh && nh<h && 0<=nw && nw<w && s[nh][nw]!='#' && d[nh][nw]==INF){
+                que.push(P(nh,nw));
+                d[nh][nw]=d[p.first][p.second] + 1;
+            }
+        }
     }
-  }
- 
-  pair<int,int> best(INF,-1);
-  rep(v,n) {
-    if (v == sv) continue;
-    for (int u : to[v]) {
-      if (u == sv) {
-        best = min(best, make_pair(dist[v],v));
-      }
-    }
-  }
-  if (best.first == INF) return vector<int>(n+1);
-  int v = best.second;
-  vector<int> res;
-  while (v != -1) {
-    res.push_back(v);
-    v = pre[v];
-  }
+    return 0;
 }
 
 
