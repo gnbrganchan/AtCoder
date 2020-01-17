@@ -106,3 +106,23 @@ bool isPrime(ll num){
 
     return true;
 }
+
+
+
+/*---区間内の素数の個数 P113---*/
+bool is_prime[MAX_L];
+bool is_prime_small[MAX_SQRT_B];
+
+//[a,b)の整数に対して篩を行う。is_prime[i-1] = true ⇔ iが素数
+void segment_sieve(ll a, ll b){
+  for(int i=0;(ll)i*i<b;i++) is_prime_small[i] = true;
+  rep(i,0,b-a-1) is_prime[i] = true;
+  
+  for(int i = 2;(ll)i*i < b;i++){
+    if(is_prime_small[i]){
+      for(int j=2*i;(ll)j*j < b;j+=i)is_prime_small[j] = false; // [2,sqrt(b))の篩
+      for(ll j=max(2LL,(a+i-1)/i)*i;j<b;j+=i)is_prime[j-a] = false; // [a,b)の篩
+    }
+  }
+}
+
