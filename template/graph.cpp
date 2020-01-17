@@ -157,6 +157,30 @@ void warshall_floyd(){
 
 
 
+/*---最小全域木問題2（クラスカル法）P101---*/
+struct edge{int u,v,cost;};
+
+bool comp(const edge& e1, const edge& e2){return e1.cost < e2.cost;}
+
+edge es[MAX_E];
+int V, E;
+
+int kruskal(){
+  sort(es,es+E,comp); //edge.costが小さい順にソートする
+  init_union_find(V);  // Union-Findの初期化
+  int res = 0;
+  rep(i, 0, E-1){
+    edge e = es[i];
+    if(!same(e.u, e.v)){
+      unite(e.u, e.v);
+      res += e.cost;
+    }
+  }
+  return res;
+}
+
+
+
 /*---Union-Find木 P84---*/
 int par[MAX_N];  //親
 int rank[MAX_N] //木の深さ
