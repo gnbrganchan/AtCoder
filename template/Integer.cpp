@@ -46,7 +46,7 @@ struct comb {
   comb(){}
   comb(int mx):f(mx+1),g(mx+1) {
     f[0] = 1;
-    rep(i,1,mx) f[i] = f[i-1]*i;
+    drep(i,1,mx) f[i] = f[i-1]*i;
     g[mx] = f[mx].pow(mod-2);
     for(int i=mx;i>0;i--) g[i-1] = g[i]*i;
   }
@@ -116,7 +116,7 @@ bool is_prime_small[MAX_SQRT_B];
 //[a,b)の整数に対して篩を行う。is_prime[i-1] = true ⇔ iが素数
 void segment_sieve(ll a, ll b){
   for(int i=0;(ll)i*i<b;i++) is_prime_small[i] = true;
-  rep(i,0,b-a-1) is_prime[i] = true;
+  rep(i,b-a) is_prime[i] = true;
   
   for(int i = 2;(ll)i*i < b;i++){
     if(is_prime_small[i]){
